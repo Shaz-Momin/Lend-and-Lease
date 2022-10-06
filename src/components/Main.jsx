@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import Headbar from './Headbar'
 
-const Home = () => {
-
+const Main = () => {
     return (
-        <div className="">
-            <div className="flex text-burntOrange-800 uppercase font-serif">Buy & Sell</div>
+        <div className="w-10/12 h-full">
+            <Headbar />
         </div>
     )
 }
 
-export default Card
+export default Main
