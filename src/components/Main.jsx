@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import BuyTab from './BuyTab'
+import LeaseTab from './LeaseTab'
 import Headbar from './Headbar'
 import HomeTab from './HomeTab'
-import SellTab from './SellTab'
+import LendTab from './LendTab'
 
 const Main = () => {
-    // Home, Buy, Sell [0, 1, 2] respectively
+    // Home, Lend, Lease [0, 1, 2] respectively
     const [tab, setTab] = useState(0)
 
     useEffect(() => {
@@ -16,8 +16,8 @@ const Main = () => {
         <div className="w-10/12 h-screen">
             <Headbar setTab={setTab} />
             {tab == 0 && <HomeTab />}
-            {tab == 1 && <BuyTab />}
-            {tab == 2 && <SellTab />}
+            {tab == 1 && <LendTab />}
+            {tab == 2 && <LeaseTab />}
         </div>
     )
 }

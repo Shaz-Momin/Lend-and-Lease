@@ -11,12 +11,13 @@ const Headbar = ({ setTab }) => {
             </div>
             <div className="flex justify-around font-semibold tracking-wider items-center">
                 <a onClick={() => setTab(0)} className="px-4 cursor-pointer">Home</a>
-                <a onClick={() => setTab(1)} className="px-4 cursor-pointer">Buy</a>
-                <a onClick={() => setTab(2)} className="px-4 cursor-pointer">Sell</a>
+                <a onClick={() => setTab(1)} className="px-4 cursor-pointer">Lend</a>
+                <a onClick={() => setTab(2)} className="px-4 cursor-pointer">Lease</a>
+
             </div>
             <div className="flex justify-around">
                 <div className="flex items-center px-4 hover:text-red-500 cursor-pointer"><MdFavorite size={25}/></div>
-                <div className="flex items-center px-4 hover:text-indigo-500 cursor-pointer"><IoBagRemove size={25}/></div>
+                {/*<div className="flex items-center px-4 hover:text-indigo-500 cursor-pointer"><IoBagRemove size={25}/></div>*/}
                 <div className="flex items-center px-4 hover:text-gray-500 cursor-pointer"><RiAccountCircleFill size={27}/></div>
             </div>
         </div>
