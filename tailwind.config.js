@@ -19,6 +19,9 @@ module.exports = {
           800: '#CC5500',
           900: '#943E00'
         },
+      },
+      fontFamily: {
+        'nunito': ['nunito', 'sans-serif'],
       }
     },
   },

@@ -13,7 +13,7 @@ const Main = () => {
     }, [tab])
 
     return (
-        <div className="w-10/12 h-screen">
+        <div className="w-10/12 h-screen font-nunito">
             <Headbar setTab={setTab} />
             {tab == 0 && <HomeTab />}
             {tab == 1 && <LendTab />}
