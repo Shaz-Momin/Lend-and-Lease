@@ -22,6 +22,7 @@ module.exports = {
       },
       fontFamily: {
         'nunito': ['nunito', 'sans-serif'],
+        'poppins': ['poppins', 'sans-serif']
       }
     },
   },
