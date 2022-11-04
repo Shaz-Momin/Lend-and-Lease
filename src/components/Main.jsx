@@ -9,15 +9,17 @@ const Main = () => {
     const [tab, setTab] = useState(0)
 
     useEffect(() => {
-        console.log(tab)
+        //console.log(tab)
     }, [tab])
 
     return (
-        <div className="w-10/12 h-screen font-poppins">
+        <div className="w-full h-screen font-poppins">
             <Headbar setTab={setTab} />
-            {tab == 0 && <HomeTab />}
-            {tab == 1 && <LendTab />}
-            {tab == 2 && <LeaseTab />}
+            <div className="h-5/6 w-10/12 ml-auto mr-auto">
+                {tab == 0 && <HomeTab />}
+                {tab == 1 && <LendTab />}
+                {tab == 2 && <LeaseTab />}
+            </div>
         </div>
     )
 }

@@ -19,6 +19,9 @@ module.exports = {
           800: '#CC5500',
           900: '#943E00'
         },
+        logoBg: {
+          400: '#F1F2F0'
+        }
       },
       fontFamily: {
         'nunito': ['nunito', 'sans-serif'],
