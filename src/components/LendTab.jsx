@@ -25,13 +25,12 @@ const LendTab = () => {
         console.log("images: ", images);
         
         // TODO: push data to firestore (database)
-
+        
     }
-    
 
     return (
         <div className="flex flex-col p-3 text-md sm:px-16 md:px-24 lg:px-48 pb-12 z-0">
-            <div className="text-center p-2">
+            <div className="text-center pt-8">
                 <h1 className="text-2xl font-bold tracking-wide">Lend an Item</h1>
             </div>
             <form className="flex flex-col p-5" onSubmit={(e) => listProduct(e)}>
@@ -100,7 +99,7 @@ const LendTab = () => {
                 </div>
                 <div className="py-14 w-full ">
                     <button type="submit" class="text-white w-full bg-slate-500 hover:bg-slate-700 hover:text-white focus:ring-blue-300 font-semibold tracking-wider outline-none rounded-lg text-sm px-5 py-2.5 mr-2 mb-4">List</button>
-                    <button type="button" class="text-slate w-full bg-slate-300 hover:bg-red-800 hover:text-white focus:ring-blue-300 font-semibold tracking-wider outline-none rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Reset</button>
+                    <button type="reset" class="text-slate w-full bg-slate-300 hover:bg-red-800 hover:text-white focus:ring-blue-300 font-semibold tracking-wider outline-none rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Reset</button>
                 </div>
             </form>
         </div>
