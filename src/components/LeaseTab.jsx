@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { collection, getDocs } from "firebase/firestore";
-import { db } from '../firebase.js'
+import { getDocs, addDoc } from "firebase/firestore";
+import { marketRef } from '../firebase.js'
 
 const LeaseTab = () => {
 
     // HOW TO PULL DATA FROM FIREBASE:
-    const colRef = collection(db, "marketplace")
-
     // Collection data
-    getDocs(colRef)
+    getDocs(marketRef)
     .then((snapshot) => {
       let items = []
       snapshot.docs.forEach((doc) => {

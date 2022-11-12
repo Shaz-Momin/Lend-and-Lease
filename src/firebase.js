@@ -1,7 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { 
+  getFirestore, collection, getDocs
+} from "firebase/firestore";
 // import { 
 //   getAuth,
 //   connectAuthEmulator,
@@ -27,8 +29,11 @@ const app = initializeApp(firebaseConfig);
 // Initialize services
 export const db = getFirestore(app);
 
+// Marketplace collection
+export const marketRef = collection(db, "marketplace")
+
 // Storage
-// export const storage = getStorage();
+export const storage = getStorage();
 
 // Collection ref
 // const colRef = collection(db, 'marketplace');

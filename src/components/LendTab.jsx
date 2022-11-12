@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { RiDatabase2Fill } from 'react-icons/Ri'
+import { addDoc } from "firebase/firestore";
+import { ref } from "firebase/storage";
+import { marketRef, storage } from '../firebase.js'
 
 let userInfo = {
     name: 'John Doe',
@@ -10,6 +13,7 @@ let userInfo = {
 const LendTab = () => {
     let sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     const [name, setName] = useState('')
+    const [lender, setLender] = useState()
     const [images, setImages] = useState([])
     const [desc, setDesc] = useState('')
     const [tags, setTags] = useState([])
@@ -22,10 +26,31 @@ const LendTab = () => {
 
     let listProduct = (e) => {
         e.preventDefault();
+
+        if (userInfo) {
+          setLender(userInfo);
+        }
+
         console.log("images: ", images);
         
         // TODO: push data to firestore (database)
-        
+        // Add docs to collection
+        addDoc(marketRef, {
+          name: name,
+          lender: lender,
+          images: images,
+          desc: desc,
+          tags: tags,
+          rentalLength: rentalLength,
+          leaseStart: leaseStart,
+          leaseEnd: leaseEnd,
+          pricePerDay: pricePerDay,
+          safetyDeposit: safetyDeposit,
+          size: size,
+        })
+        for (var i in images) {
+          ref(storage, `/images/${i.name}`)
+        }
     }
 
     return (
