@@ -13,23 +13,22 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDgyk0y59mCnEuvKP9OEHAHhc9Vu0i2ius",
-  authDomain: "buy-and-sell-e306a.firebaseapp.com",
-  projectId: "buy-and-sell-e306a",
-  storageBucket: "buy-and-sell-e306a.appspot.com",
-  messagingSenderId: "947963853933",
-  appId: "1:947963853933:web:91663eb923324f4b4b9364",
-  measurementId: "G-HQKWST0ZFQ",
+  apiKey: "AIzaSyAqQpACjgr4yLlsW-FP4BRECKZSyv4R_SA",
+  authDomain: "lend-and-lease.firebaseapp.com",
+  projectId: "lend-and-lease",
+  storageBucket: "lend-and-lease.appspot.com",
+  messagingSenderId: "589013035905",
+  appId: "1:589013035905:web:b4d65afdcc810679059680"
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-// Initialize servies
-export const db = getFirestore();
+// Initialize services
+export const db = getFirestore(app);
 
 // Storage
-export const storage = getStorage();
+// export const storage = getStorage();
 
 // Collection ref
 // const colRef = collection(db, 'marketplace');

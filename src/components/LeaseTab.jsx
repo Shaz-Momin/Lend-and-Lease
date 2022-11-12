@@ -4,14 +4,20 @@ import { db } from '../firebase.js'
 
 const LeaseTab = () => {
 
-    // Collection ref
-    const colRef = collection(db, 'marketplace'); 
+    // HOW TO PULL DATA FROM FIREBASE:
+    const colRef = collection(db, "marketplace")
 
     // Collection data
     getDocs(colRef)
     .then((snapshot) => {
-      console.log(colRef)
-      console.log(snapshot.docs)
+      let items = []
+      snapshot.docs.forEach((doc) => {
+        items.push({ ...doc.data(), id: doc.id})
+      })
+      console.log(items);
+    })
+    .catch(err => {
+      console.log(err.message)
     })
   
     return (
