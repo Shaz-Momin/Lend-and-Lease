@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { RiDatabase2Fill } from 'react-icons/Ri'
 import { addDoc } from "firebase/firestore";
-import { ref } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
 import { marketRef, storage } from '../firebase.js'
 
 let userInfo = {
@@ -13,7 +13,7 @@ let userInfo = {
 const LendTab = () => {
     let sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     const [name, setName] = useState('')
-    const [lender, setLender] = useState()
+    const [lender, setLender] = useState({})
     const [images, setImages] = useState([])
     const [desc, setDesc] = useState('')
     const [tags, setTags] = useState([])
@@ -30,9 +30,6 @@ const LendTab = () => {
         if (userInfo) {
           setLender(userInfo);
         }
-
-        console.log("images: ", images);
-        
         // TODO: push data to firestore (database)
         // Add docs to collection
         addDoc(marketRef, {
@@ -48,8 +45,9 @@ const LendTab = () => {
           safetyDeposit: safetyDeposit,
           size: size,
         })
-        for (var i in images) {
-          ref(storage, `/images/${i.name}`)
+        for (var i = 0; i < images.length; ++i) {
+          const storageRef = ref(storage, `/images/${images[i].name}`);
+          uploadBytes(storageRef, images[i]);
         }
     }
 
@@ -61,7 +59,7 @@ const LendTab = () => {
             <form className="flex flex-col p-5" onSubmit={(e) => listProduct(e)}>
                 <div className="w-full py-2.5">
                     <h1 className="text-lg py-2 font-semibold tracking-wide">Photos</h1>
-                    <input type="file" onChange={(e) => setImages(e.target.value)} required multiple className="w-full"/>
+                    <input type="file" onChange={(e) => setImages(e.target.files)} required multiple className="w-full"/>
                 </div>
                 <div>
                     <h1 className="text-lg py-2 font-semibold tracking-wide">Product Information</h1>
