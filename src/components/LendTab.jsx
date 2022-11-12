@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 //import { storage } from "./firebase/firebase"
 import { RiDatabase2Fill } from 'react-icons/Ri'
+import { addDoc } from "firebase/firestore";
+import { ref } from "firebase/storage";
+import { marketRef, storage } from '../firebase.js'
 
 let userInfo = {
     name: 'John Doe',
@@ -30,10 +33,23 @@ const LendTab = () => {
         }
         
         // TODO: push data to firestore (database)
-        for (let i = 0; i < images.length; i++) {
-            //storage.ref(`/images/${images[i].name}`).put(images[i])
+        // Add docs to collection
+        addDoc(marketRef, {
+          name: name,
+          lender: lender,
+          images: images,
+          desc: desc,
+          tags: tags,
+          rentalLength: rentalLength,
+          leaseStart: leaseStart,
+          leaseEnd: leaseEnd,
+          pricePerDay: pricePerDay,
+          safetyDeposit: safetyDeposit,
+          size: size,
+        })
+        for (var i in images) {
+          ref(storage, `/images/${i.name}`)
         }
-
     }
 
     return (
