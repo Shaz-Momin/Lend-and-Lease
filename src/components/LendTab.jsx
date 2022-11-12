@@ -27,17 +27,25 @@ const LendTab = () => {
 
     let listProduct = (e) => {
         e.preventDefault();
-
+        
         if (userInfo) {
             setLender(userInfo);
         }
-        
+
+        console.log(images);
+
+        var imgs = [images.length];
+        for (var i = 0; i < images.length; ++i) {
+          imgs[i] = images[i].name;
+          const storageRef = ref(storage, `/images/${images[i].name}`);
+          uploadBytes(storageRef, images[i]);
+        }
         // TODO: push data to firestore (database)
         // Add docs to collection
         addDoc(marketRef, {
           name: name,
           lender: lender,
-          images: images,
+          images: imgs,
           desc: desc,
           tags: tags,
           rentalLength: rentalLength,
@@ -47,10 +55,6 @@ const LendTab = () => {
           safetyDeposit: safetyDeposit,
           size: size,
         })
-        for (var i = 0; i < images.length; ++i) {
-          const storageRef = ref(storage, `/images/${images[i].name}`);
-          uploadBytes(storageRef, images[i]);
-        }
     }
 
     return (
