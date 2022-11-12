@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+//import { storage } from "./firebase/firebase"
 import { RiDatabase2Fill } from 'react-icons/Ri'
 
 let userInfo = {
@@ -10,6 +11,7 @@ let userInfo = {
 const LendTab = () => {
     let sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     const [name, setName] = useState('')
+    const [lender, setLender] = useState()
     const [images, setImages] = useState([])
     const [desc, setDesc] = useState('')
     const [tags, setTags] = useState([])
@@ -22,10 +24,16 @@ const LendTab = () => {
 
     let listProduct = (e) => {
         e.preventDefault();
-        console.log("images: ", images);
+
+        if (userInfo) {
+            setLender(userInfo);
+        }
         
         // TODO: push data to firestore (database)
-        
+        for (let i = 0; i < images.length; i++) {
+            //storage.ref(`/images/${images[i].name}`).put(images[i])
+        }
+
     }
 
     return (
@@ -36,7 +44,7 @@ const LendTab = () => {
             <form className="flex flex-col p-5" onSubmit={(e) => listProduct(e)}>
                 <div className="w-full py-2.5">
                     <h1 className="text-lg py-2 font-semibold tracking-wide">Photos</h1>
-                    <input type="file" onChange={(e) => setImages(e.target.value)} required multiple className="w-full"/>
+                    <input type="file" accept="image/*" onChange={(e) => setImages(e.target.files)} required multiple className="w-full"/>
                 </div>
                 <div>
                     <h1 className="text-lg py-2 font-semibold tracking-wide">Product Information</h1>
