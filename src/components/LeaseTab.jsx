@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getDocs, addDoc } from "firebase/firestore";
 import { marketRef } from '../firebase.js'
-
+import Card from './Card.jsx';
 const LeaseTab = () => {
 
     // HOW TO PULL DATA FROM FIREBASE:
@@ -43,7 +43,7 @@ const LeaseTab = () => {
               </svg>
             </button>
           </div>
-          <form class="mt-4 border-t border-gray-200">
+          <form class="mt-4 border-t border-pink-200">
             <h3 class="sr-only">Categories</h3>
             <ul role="list" class="px-2 py-3 font-medium text-gray-900">
               <li>
@@ -297,6 +297,8 @@ const LeaseTab = () => {
             </div>
 
             <div class="border-b border-gray-200 py-6">
+            <div class= "container grid-cols-2 grid-rows-2 p-4 items-center">
+    </div>
               <h3 class="-my-3 flow-root">
                 <button type="button" class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
                   <span class="font-medium text-gray-900">Category</span>
@@ -390,9 +392,53 @@ const LeaseTab = () => {
             </div>
           </form>
           <div class="lg:col-span-3">
-            <div class="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full"></div>
-          </div>
+            {/* <div class="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full"> */}
+    <div class= "container mx-auto sm:px-4 grid-cols-4 grid-rows-2 p-6 items-center">
+      <div class= "flex flex-wrap ">
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card></Card>
         </div>
+        
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card ></Card>
+        </div>
+
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card></Card>
+        </div>
+      </div>
+      
+      <div class= "flex flex-wrap ">
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card> </Card>
+        </div>
+        
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card > </Card>
+        </div>
+
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card></Card>
+        </div>
+      </div>
+
+      <div class= "flex flex-wrap ">
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card></Card>
+        </div>
+        
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card></Card>
+        </div>
+        
+        <div class= "lg:w-1/3 pr-4 pl-4">
+        <Card></Card>
+        </div>
+      </div>
+    </div>
+            </div>
+          </div>
+        {/* </div> */}
       </section>
     </main>
   </div>
