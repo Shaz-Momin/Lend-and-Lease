@@ -34,6 +34,7 @@ export default function Card({product}) {
     
     const divStyle = {
         margin:'20px'
+        
     }
 
     useEffect(() => {
@@ -77,4 +78,14 @@ export default function Card({product}) {
         </div>
     )
 }
+
+
+// <div className="img-footer">
+// <a>
+//     <h2 className="text-sm p-2 mt-1 absolute not-italic font-semibold text-sm flex items-center text-black">{data.name}</h2>
+// </a>
+//     <p className="text-sm p-2 mt-5 absolute not-italic text-sm flex items-center text-black">${data.pricePerDay} per day</p>
+//     <p className="text-sm p-1 mt-9 center absolute not-italic text-sm flex items-center text-black">{data.leaseStart} - {data.leaseEnd}</p>
+// </div>
+// </div>
 
