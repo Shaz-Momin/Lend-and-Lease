@@ -1,17 +1,3 @@
-
-// const LeaseTab = () => {
-//     return (
-//         <div className="flex justify-between p-5 text-md h-full">
-//             <div className='bg-logoBg-400 w-full h-full'>
-//                 Lease Tab
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default LeaseTab
-
-/*eslint-disable @next/next/no-img-element */
 import { setRevalidateHeaders } from 'next/dist/server/send-payload'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
@@ -70,10 +56,10 @@ export default function Card({product}) {
             </a>
             <div className="img-footer">
                 <a>
-                    <h2 className="text-sm p-2">{data.name}</h2>
+                    <h2 className="text-sm mx-1 mt-4">{data.name}</h2>
                 </a>
-                    <p className="text-sm m-2">${data.pricePerDay} per day</p>
-                    <p className="text-sm m-2 center">{data.leaseStart} - {data.leaseEnd}</p>
+                    <p className="text-sm mx-12 mt-2 mb-1">${data.pricePerDay} per day</p>
+                    <p className="text-sm mx-7 center">{data.leaseStart} - {data.leaseEnd}</p>
             </div>
         </div>
     )
