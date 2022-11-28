@@ -2,8 +2,9 @@ import { setRevalidateHeaders } from 'next/dist/server/send-payload'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { IoImageSharp } from 'react-icons/io5';
+import { RiContactsBookLine } from 'react-icons/Ri';
 
-export default function Card({product}) {
+export default function Card({data}) {
     const[name, setName] = useState('');
     const [images, setImages] = useState([])
     const [desc, setDesc] = useState('')
@@ -16,14 +17,12 @@ export default function Card({product}) {
     const [size, setSize] = useState('M')
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(false)
-    const [data, setData] = useState([])
-    
-    const divStyle = {
-        margin:'20px'
-        
-    }
+    //const [data, setData] = useState([])
 
-    useEffect(() => {
+
+    const options = { month:"short", day: "numeric" };
+
+    /* useEffect(() => {
         fetch("http://localhost:3000/api/data")
         .then(response => {
             if (response.ok) {
@@ -41,25 +40,26 @@ export default function Card({product}) {
         .finally(() => {
             setLoading(false);
         })
-    }, [])  
+    }, [])   */
         
 
     return (
-        <div style ={divStyle} classname= "card">
-                <a>
-                    <img 
+        <div classname= "card m-3">
+            <a className='flex items-center justify-center hover:border' href="https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900">
+                <img 
                     width="200"
-                    src={data.images}
+                    src={"https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900"}
                     alt={data.name}
-                    className="rounded shadow items-center p-1"
-                    />
+                    className="rounded items-center p-1"
+                />
             </a>
-            <div className="img-footer">
-                <a>
-                    <h2 className="text-sm mx-1 mt-4">{data.name}</h2>
-                </a>
-                    <p className="text-sm mx-12 mt-2 mb-1">${data.pricePerDay} per day</p>
-                    <p className="text-sm mx-7 center">{data.leaseStart} - {data.leaseEnd}</p>
+            <div className="img-footer flex flex-col justify-center items-center hover:bg-slate-200">
+                <div className='flex justify-center items-center'>
+                    <div className="flex text-lg font-semibold mx-1 mt-4">{data.name}</div>
+                </div>
+                <p className="text-md mx-4 mt-2 mb-1">${data.pricePerDay}/day</p>
+                <p className="text-sm mx-4 mt-1">(Safety: ${data.safetyDeposit})</p>
+                <p className="text-sm mx-4 pb-4 mb-2 italic center">{new Date(data.leaseStart).toLocaleDateString('en-us', options) + " - " +  new Date(data.leaseEnd).toLocaleDateString('en-us', options)}</p>
             </div>
         </div>
     )
