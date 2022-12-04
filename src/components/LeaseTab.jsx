@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { getDocs, addDoc } from "firebase/firestore";
 import { marketRef } from '../firebase.js'
 import Card from './Card.jsx';
-const LeaseTab = () => {
 
+const LeaseTab = () => {
     const [products, setProducts] = useState([]);
 
     // HOW TO PULL DATA FROM FIREBASE:
@@ -65,11 +65,11 @@ const LeaseTab = () => {
               </li>
 
               <li>
-                <a href="#" className="block px-2 py-3">Hip Bags</a>
+                <a href="#" className="block px-2 py-3">Dress Shirts</a>
               </li>
 
               <li>
-                <a href="#" className="block px-2 py-3">Laptop Sleeves</a>
+                <a href="#" className="block px-2 py-3">Jackets & Hoodies</a>
               </li>
             </ul>
 
@@ -403,7 +403,7 @@ const LeaseTab = () => {
               <div className= "flex flex-wrap ">
                 {products && products.map((product) => {
                   return (
-                  <div className="lg:w-1/3 pr-4 pl-4"> 
+                  <div className="lg:w-1/3 pr-4 pl-4 mb-12"> 
                     <Card data={product}></Card>
                   </div>)})}
               </div>

@@ -4,6 +4,7 @@ import { RiDatabase2Fill } from 'react-icons/Ri'
 import { addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { marketRef, storage } from '../firebase.js'
+import { MdSettingsBackupRestore } from 'react-icons/md';
 
 let userInfo = {
     name: 'John Doe',
@@ -11,7 +12,7 @@ let userInfo = {
     phone: '123-456-7890',
 }
 
-const LendTab = () => {
+const LendTab = ({ setTab }) => {
     let sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     const [name, setName] = useState('')
     const [lender, setLender] = useState({})
@@ -55,6 +56,8 @@ const LendTab = () => {
           safetyDeposit: safetyDeposit,
           size: size,
         })
+
+        setTab(2); // switch to lease tab
     }
 
     return (

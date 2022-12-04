@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BiCloset } from 'react-icons/bi'
+import { SiConvertio } from 'react-icons/si'
+import { RiMoneyDollarCircleFill } from 'react-icons/Ri'
+import { RiSpam2Fill } from 'react-icons/Ri'
 import Image from 'next/image'
 
 const HomeTab = () => {
@@ -25,8 +28,29 @@ const HomeTab = () => {
                     </div>
                 </div>
             </div>
-            <div className="grid bg-logoBg-400">
-                <div>Top 5 Products</div> 
+            <div className="grid lg:grid-cols-3 gap-6 lg:gap-16 content-center justify-center">
+                <div className="bg-logoBg-400 rounded-[1.5rem] p-9">
+                    <div className='flex justify-between mb-4'>
+                        <div className="text-xl font-semibold tracking-wide m-auto ml-0">Convenience</div>
+                        <SiConvertio size={35} color={"#cc5500"}/>
+                    </div>
+                    <div className="text-md text-gray-500">Lend and Lease from fellow UT students without shipping and waiting hassles.</div>
+                </div> 
+                <div className="bg-logoBg-400 rounded-[1.5rem] p-10">
+                <div className='flex justify-between mb-4'>
+                        <div className="text-xl font-semibold tracking-wide m-auto ml-0">Affordability</div>
+                        <RiMoneyDollarCircleFill size={40} color={"#cc5500"}/>
+                    </div>
+                     <div className="text-md text-gray-500">Find campus neccesities and other items below retail prices.</div>
+                </div> 
+                <div className="bg-logoBg-400 rounded-[1.5rem] p-10">
+                    <div className='flex justify-between mb-4'>
+                        <div className="text-xl font-semibold tracking-wide m-auto ml-0">Fraud Prevention</div>
+                        <RiSpam2Fill size={40} color={"#cc5500"}/>
+                    </div>
+                    <div className="text-md text-gray-500">Every user is authenticated through their UT email, ensuring a safe transaction.</div>
+                </div> 
+                
             </div>
         </div>
     )

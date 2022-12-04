@@ -17,7 +17,7 @@ const Main = () => {
             <Headbar setTab={setTab} />
             <div className="h-5/6 w-10/12 ml-auto mr-auto">
                 {tab == 0 && <HomeTab />}
-                {tab == 1 && <LendTab />}
+                {tab == 1 && <LendTab setTab={setTab} />}
                 {tab == 2 && <LeaseTab />}
             </div>
         </div>

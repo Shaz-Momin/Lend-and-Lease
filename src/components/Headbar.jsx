@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { MdFavorite } from 'react-icons/md'
-import { IoBagRemove } from 'react-icons/io5'
 import { RiAccountCircleFill } from 'react-icons/Ri'
 
 const Headbar = ({ setTab }) => {
