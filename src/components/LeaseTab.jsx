@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { getDocs, addDoc } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { marketRef } from '../firebase.js'
-import Card from './Card.jsx';
+import Card from './Card';
 
 const LeaseTab = () => {
     const [products, setProducts] = useState([]);
@@ -403,7 +403,7 @@ const LeaseTab = () => {
               <div className= "flex flex-wrap ">
                 {products && products.map((product) => {
                   return (
-                  <div className="lg:w-1/3 pr-4 pl-4 mb-12"> 
+                  <div className="lg:w-1/3 pr-4 pl-4 mb-12" key={product.name}> 
                     <Card data={product}></Card>
                   </div>)})}
               </div>

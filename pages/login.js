@@ -20,7 +20,7 @@ export default function login() {
                         w-full p-3 hover:bg-burntOrange-700">Sign in</button>
                 </div>
                 <div className="text-grey-dark mt-6">
-                    Don't have an account? <a className="no-underline border-b border-blue text-blue" href="../signup/">Sign up</a>.
+                    Don't have an account? <a className="no-underline border-b border-blue text-blue" href="../signup/">Sign up</a>
                 </div>
             </div>
         </div>
