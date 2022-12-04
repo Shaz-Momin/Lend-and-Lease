@@ -8,7 +8,7 @@ import { getDownloadURL, ref } from 'firebase/storage'
 
 let userInfo = {
     name: 'John Doe',
-    email: 'johndoe@gmail.com',
+    email: 'johndoe@utexas.edu',
     phone: '123-456-7890',
 }
 
