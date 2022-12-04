@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { MdFavorite } from 'react-icons/md'
-import { RiAccountCircleFill } from 'react-icons/Ri'
+import { RiAccountCircleFill } from 'react-icons/ri'
 
 const Headbar = ({ setTab }) => {
 

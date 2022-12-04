@@ -1,8 +1,4 @@
-import { setRevalidateHeaders } from 'next/dist/server/send-payload'
-import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
-import { IoImageSharp } from 'react-icons/io5';
-import { RiContactsBookLine } from 'react-icons/Ri';
 import { imagesRef, storage } from '../firebase.js'
 import { getDownloadURL, ref } from 'firebase/storage'
 
