@@ -3,6 +3,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { IoImageSharp } from 'react-icons/io5';
 import { RiContactsBookLine } from 'react-icons/Ri';
+import { imagesRef, storage } from '../firebase.js'
+import { getDownloadURL, ref } from 'firebase/storage'
 
 let userInfo = {
     name: 'John Doe',
@@ -28,6 +30,27 @@ export default function Card({data}) {
 
     const options = { month:"short", day: "numeric" };
 
+    const url = getDownloadURL(ref(storage, 'images/'.concat(data.images[0])))
+    .then((url) => {
+        // `url` is the download URL for 'images/'
+
+        // This can be downloaded directly:
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+        const blob = xhr.response;
+        };
+        xhr.open('GET', url);
+        xhr.send();
+
+        // Or inserted into an <img> element
+        const img = document.getElementById('myimg');
+        img.setAttribute('src', url);
+    })
+    .catch((error) => {
+        // Handle any errors
+    });
+
     /* useEffect(() => {
         fetch("http://localhost:3000/api/data")
         .then(response => {
@@ -48,13 +71,13 @@ export default function Card({data}) {
         })
     }, [])   */
         
-
+    console.log(url);
     return (
         <div classname= "card m-3">
-            <a className='flex items-center justify-center hover:border' href="https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900">
+            <a className='flex items-center justify-center hover:border' href={url}>
                 <img 
                     width="200"
-                    src={"https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900"}
+                    src={url}
                     alt={data.name}
                     className="rounded items-center p-1"
                 />
