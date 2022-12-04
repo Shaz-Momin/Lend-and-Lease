@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 //import { storage } from "./firebase/firebase"
-import { RiDatabase2Fill } from 'react-icons/Ri'
 import { addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { marketRef, storage } from '../firebase.js'
-import { MdSettingsBackupRestore } from 'react-icons/md';
 
 let userInfo = {
     name: 'John Doe',
