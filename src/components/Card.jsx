@@ -71,9 +71,10 @@ export default function Card({data}) {
         })
     }, [])   */
         
+    console.log(url);
     return (
         <div classname= "card m-3">
-            <a className='flex items-center justify-center hover:border' href="https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900">
+            <a className='flex items-center justify-center hover:border' href={url}>
                 <img 
                     width="200"
                     src={url}
