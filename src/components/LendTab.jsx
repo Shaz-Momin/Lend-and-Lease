@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 //import { storage } from "./firebase/firebase"
-import { RiDatabase2Fill } from 'react-icons/Ri'
 import { addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { marketRef, storage } from '../firebase.js'
-import { MdSettingsBackupRestore } from 'react-icons/md';
 
 let userInfo = {
     name: 'John Doe',
@@ -75,38 +73,38 @@ const LendTab = ({ setTab }) => {
                     <h1 className="text-lg py-2 font-semibold tracking-wide">Product Information</h1>
                 </div>
                 <div className="w-full py-1.5">
-                    <label for="title" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Product Title</label>
+                    <label htmlFor="title" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Product Title</label>
                     <input type="text" onChange={(e) => setName(e.target.value)} required id="title" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='Vintage UT Longhorn Jacket'/>
                 </div>
                 <div className="w-full py-1.5">
-                    <label for="description" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Description</label>
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Description</label>
                     <textarea id="description" onChange={(e) => setDesc(e.target.value)}  required rows="3" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 tracking-wider rounded-md border border-gray-300 outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Embroidered logo on the front and back..."></textarea>
                 </div>
                 <div className="w-full py-1.5 flex flex-row">
                     <div className="w-full pr-2">
-                        <label for="size" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Size</label>
+                        <label htmlFor="size" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Size</label>
                         <select id="sizes" required onChange={(e) => setSize(e.target.value)} defaultValue={'M'} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm tracking-wider rounded-md outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             {sizeOptions.map((size) => {
-                                return <option value={size}>{size}</option>
+                                return <option key={size} value={size}>{size}</option>
                             })}
                         </select>
                     </div>
                     <div className="w-full pl-2">
-                        <label for="tags" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Tags</label>
+                        <label htmlFor="tags" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Tags</label>
                         <input type="text" onChange={(e) => setTags((e.target.value).split(' '))}  required id="tags" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='#new #cooldesign #perfectfit'/>
                     </div>
                 </div>
                 <div className="w-full py-1.5">
-                    <label for="rentalLength" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Length of Rental (days)</label>
+                    <label htmlFor="rentalLength" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Length of Rental (days)</label>
                     <input type="number" onChange={(e) => setRentalLength(e.target.value)}  required id="rentalLength" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='6'/>
                 </div>
                 <div className="w-full py-1.5 flex flex-row">
                     <div className="w-full pr-2">
-                        <label for="leaseStart" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Lease Start</label>
+                        <label htmlFor="leaseStart" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Lease Start</label>
                         <input type="date" onChange={(e) => setLeaseStart(e.target.value)} required id="leaseStart" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='6'/>
                     </div>
                     <div className="w-full pl-2">
-                        <label for="leaseEnd" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Lease End</label>
+                        <label htmlFor="leaseEnd" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Lease End</label>
                         <input type="date" onChange={(e) => setLeaseEnd(e.target.value)} required id="leaseEnd" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='6'/>
                     </div>
                 </div>
@@ -116,14 +114,14 @@ const LendTab = ({ setTab }) => {
                 </div>
                 <div className="w-full py-1.5 flex flex-row">
                     <div className="w-full pr-2">
-                        <label for="pricePerDay" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Lease price per day</label>
+                        <label htmlFor="pricePerDay" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Lease price per day</label>
                         <div className="flex">
                             <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300">$</span>
                             <input type="number" onChange={(e) => setPricePerDay(e.target.value)}  step={0.01} required id="pricePerDay" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-r-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='8.50'/>
                         </div>
                     </div>
                     <div className="w-full pl-2">
-                        <label for="safetyDeposit" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Safety Deposit</label>
+                        <label htmlFor="safetyDeposit" className="block mb-2 text-sm font-medium tracking-wider text-gray-900">Safety Deposit</label>
                         <div className="flex">
                             <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300">$</span>
                             <input type="number" onChange={(e) => setSafetyDeposit(e.target.value)}  step={0.01} required id="safetyDeposit" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-r-md tracking-wider border outline-none border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" placeholder='75.00'/>

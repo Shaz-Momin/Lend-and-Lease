@@ -1,8 +1,8 @@
 import React from 'react'
 import { BiCloset } from 'react-icons/bi'
 import { SiConvertio } from 'react-icons/si'
-import { RiMoneyDollarCircleFill } from 'react-icons/Ri'
-import { RiSpam2Fill } from 'react-icons/Ri'
+import { RiMoneyDollarCircleFill } from 'react-icons/ri'
+import { RiSpam2Fill } from 'react-icons/ri'
 import Image from 'next/image'
 
 const HomeTab = () => {
