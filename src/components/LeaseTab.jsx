@@ -3,8 +3,53 @@ import { getDocs, addDoc } from "firebase/firestore";
 import { marketRef } from '../firebase.js'
 import Card from './Card.jsx';
 
+var data = [
+    {
+        "desc": "A grey Adidas T-shirt",
+        "id": "4fwjRqwaVZlqA8cW25PM",
+        "images": ["https://firebasestorage.googleapis.com/v0/b/lend-and-lease.appspot.com/o/images%2Ft-shirt.jpg?alt=media&token=79ac428d-00e2-4727-bedf-9961f7cc56d0"],
+        "leaseEnd": "2022-12-01",
+        "leaseStart": "2023-12-01",
+        "lender": {"name": "John Doe", "email": "johndoe@gmail.com", "phone": "123-456-7890"},
+        "name": "T-shirt",
+        "pricePerDay": "9.99",
+        "rentalLength": "\"365\"",
+        "safetyDeposit": "9.99",
+        "size": "M",
+        "tags": ["<tag1>", "<tag2>"]
+    },
+    {
+        "desc": "Big size UT flag (burnt orange) with two holes on the left side to hang it up.",
+        "id": "JhnfCIj1cC7h0dQqVkNr",
+        "images": ["https://firebasestorage.googleapis.com/v0/b/lend-and-lease.appspot.com/o/images%2Futflag.jpg?alt=media&token=2d5560dd-603a-4ea1-8f91-509d562823eb"],
+        "leaseEnd": "2023-01-02",
+        "leaseStart": "2022-11-30",
+        "lender": {},
+        "name": "UT Vintage Flag",
+        "pricePerDay": "4.50",
+        "rentalLength": "\"12\"",
+        "safetyDeposit": "35",
+        "size": "M",
+        "tags": ["#UTPride", "#Trendy", "#Cool"]
+    },
+    {
+        "desc": "UT Jacket",
+        "id": "ia5b38Lufeut4k282AZo",
+        "images": ["https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900"],
+        "leaseEnd": "2022-12-16",
+        "leaseStart": "2022-12-09",
+        "lender": {},
+        "name": "UT Jacket",
+        "pricePerDay": "3.5",
+        "rentalLength": "\"2\"",
+        "safetyDeposit": "25",
+        "size": "M",
+        "tags": ["#random", "#new"]
+    }
+]
+
 const LeaseTab = () => {
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
 
     // HOW TO PULL DATA FROM FIREBASE:
     // Collection data
@@ -401,7 +446,7 @@ const LeaseTab = () => {
             {/* <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full"> */}
             <div className= "container mx-auto sm:px-4 grid-cols-4 grid-rows-2 p-6 items-center">
               <div className= "flex flex-wrap ">
-                {products && products.map((product) => {
+                {data && data.map((product) => {
                   return (
                   <div className="lg:w-1/3 pr-4 pl-4 mb-12"> 
                     <Card data={product}></Card>
