@@ -22,29 +22,17 @@ export default function Card({data}) {
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(false)
     //const [data, setData] = useState([])
+    const [imgUrl, setUrl] = useState('');
 
 
     const options = { month:"short", day: "numeric" };
 
     const url = getDownloadURL(ref(storage, 'images/'.concat(data.images[0])))
     .then((url) => {
-        // `url` is the download URL for 'images/'
-
-        // This can be downloaded directly:
-        const xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = (event) => {
-        const blob = xhr.response;
-        };
-        xhr.open('GET', url);
-        xhr.send();
-
-        // Or inserted into an <img> element
-        const img = document.getElementById('myimg');
-        img.setAttribute('src', url);
+        setUrl(url);
     })
     .catch((error) => {
-        // Handle any errors
+
     });
 
     /* useEffect(() => {
@@ -67,19 +55,20 @@ export default function Card({data}) {
         })
     }, [])   */
         
-    url.then((val) => {
-        console.log(val);
-    })
-    .catch((err => console.log(err)));
+    // url.then((val) => {
+    //     console.log(val);
+    // })
+    // .catch((err => console.log(err)));
+
     // "https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900"
     
     // console.log(data);
     return (
         <div classname= "card m-3">
-            <a className='flex items-center justify-center hover:border h-48' href={url}>
+            <a className='flex items-center justify-center hover:border h-48' href={imgUrl}>
                 <img 
                     width="200"
-                    src={url}
+                    src={imgUrl}
                     alt={data.name}
                     className="rounded items-center p-1"
                 />
