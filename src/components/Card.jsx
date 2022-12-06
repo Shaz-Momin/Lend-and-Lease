@@ -33,7 +33,7 @@ export default function Card({data}) {
 
     return (
         <div classname= "card m-3" title={data.desc}>
-            <a className='flex items-center justify-center hover:border h-52' target="_blank" href={imgUrl}>
+            <a className='flex items-center justify-center hover:border h-52' rel="noreferrer" target="_blank" href={imgUrl}>
                 <img 
                     width="200"
                     src={imgUrl}
