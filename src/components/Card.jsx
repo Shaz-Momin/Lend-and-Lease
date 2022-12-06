@@ -9,21 +9,17 @@ let userInfo = {
 }
 
 export default function Card({data}) {
-    const[name, setName] = useState('');
-    const [images, setImages] = useState([])
-    const [desc, setDesc] = useState('')
-    const [tags, setTags] = useState([])
-    const [rentalLength, setRentalLength] = useState(0)
-    const [leaseStart, setLeaseStart] = useState('')
-    const [leaseEnd, setLeaseEnd] = useState('')
-    const [pricePerDay, setPricePerDay] = useState(0)
-    const [safetyDeposit, setSafetyDeposit] = useState(0)
-    const [size, setSize] = useState('M')
-    const [productList, setProductList] = useState([]);
-    const [loading, setLoading] = useState(false)
-    //const [data, setData] = useState([])
     const [imgUrl, setUrl] = useState('');
 
+    Date.prototype.addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    }
+    
+    var date = new Date();
+    
+    console.log(date.addDays(5));
 
     const options = { month:"short", day: "numeric" };
 
@@ -32,40 +28,12 @@ export default function Card({data}) {
         setUrl(url);
     })
     .catch((error) => {
-
+        console.log(error);
     });
 
-    /* useEffect(() => {
-        fetch("http://localhost:3000/api/data")
-        .then(response => {
-            if (response.ok) {
-                return response.json()
-            }
-            throw response;
-        })
-        .then(data => {
-            setData(data[0]);
-        })
-        .catch(error => {
-            console.error("Error fetching data: ", error);
-            new SpeechSynthesisErrorEvent(error);
-        })
-        .finally(() => {
-            setLoading(false);
-        })
-    }, [])   */
-        
-    // url.then((val) => {
-    //     console.log(val);
-    // })
-    // .catch((err => console.log(err)));
-
-    // "https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900"
-    
-    // console.log(data);
     return (
-        <div classname= "card m-3">
-            <a className='flex items-center justify-center hover:border h-48' href={imgUrl}>
+        <div classname= "card m-3" title={data.desc}>
+            <a className='flex items-center justify-center hover:border h-52' target="_blank" href={imgUrl}>
                 <img 
                     width="200"
                     src={imgUrl}
@@ -79,8 +47,11 @@ export default function Card({data}) {
                 </div>
                 <p className="text-md mx-4 mt-2 mb-1">${data.pricePerDay}/day</p>
                 <p className="text-sm mx-4">(Safety: ${data.safetyDeposit})</p>
-                <p className="text-sm mx-4 mt-1 italic center">{new Date(data.leaseStart).toLocaleDateString('en-us', options) + " - " +  new Date(data.leaseEnd).toLocaleDateString('en-us', options)}</p>
-                <p className="text-sm mx-4 mt-2 mb-4 text-center">Contact {userInfo.name} <a href={"mailto:" + userInfo.email}>{userInfo.email}</a></p>
+                <p className="text-sm mx-4 mt-1 italic center">{new Date(data.leaseStart).addDays(1).toLocaleDateString('en-us', options) + " - " +  new Date(data.leaseEnd).addDays(1).toLocaleDateString('en-us', options)}</p>
+                <p className="text-sm mx-4 mt-2 mb-4 text-center">Contact
+                    <span className='font-semibold text-burntOrange-800 px-1'>{userInfo.name}</span><br></br>
+                    <a className="italic" href={"mailto:" + userInfo.email}>{userInfo.email}</a>
+                </p>
             </div>
         </div>
     )
