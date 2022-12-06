@@ -76,10 +76,10 @@ export default function Card({data}) {
     // console.log(data);
     return (
         <div classname= "card m-3">
-            <a className='flex items-center justify-center hover:border h-48' href={data.images[0]}>
+            <a className='flex items-center justify-center hover:border h-48' href={url}>
                 <img 
                     width="200"
-                    src={data.images[0]}
+                    src={url}
                     alt={data.name}
                     className="rounded items-center p-1"
                 />
