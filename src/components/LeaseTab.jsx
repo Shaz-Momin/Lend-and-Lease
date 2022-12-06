@@ -49,7 +49,7 @@ var data = [
 ]
 
 const LeaseTab = () => {
-    // const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
     // HOW TO PULL DATA FROM FIREBASE:
     // Collection data
@@ -446,7 +446,7 @@ const LeaseTab = () => {
             {/* <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full"> */}
             <div className= "container mx-auto sm:px-4 grid-cols-4 grid-rows-2 p-6 items-center">
               <div className= "flex flex-wrap ">
-                {data && data.map((product) => {
+                {products && products.map((product) => {
                   return (
                   <div className="lg:w-1/3 pr-4 pl-4 mb-12" key={product.name}> 
                     <Card data={product}></Card>

@@ -26,26 +26,26 @@ export default function Card({data}) {
 
     const options = { month:"short", day: "numeric" };
 
-    // const url = getDownloadURL(ref(storage, 'images/'.concat(data.images[0])))
-    // .then((url) => {
-    //     // `url` is the download URL for 'images/'
+    const url = getDownloadURL(ref(storage, 'images/'.concat(data.images[0])))
+    .then((url) => {
+        // `url` is the download URL for 'images/'
 
-    //     // This can be downloaded directly:
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.responseType = 'blob';
-    //     xhr.onload = (event) => {
-    //     const blob = xhr.response;
-    //     };
-    //     xhr.open('GET', url);
-    //     xhr.send();
+        // This can be downloaded directly:
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+        const blob = xhr.response;
+        };
+        xhr.open('GET', url);
+        xhr.send();
 
-    //     // Or inserted into an <img> element
-    //     const img = document.getElementById('myimg');
-    //     img.setAttribute('src', url);
-    // })
-    // .catch((error) => {
-    //     // Handle any errors
-    // });
+        // Or inserted into an <img> element
+        const img = document.getElementById('myimg');
+        img.setAttribute('src', url);
+    })
+    .catch((error) => {
+        // Handle any errors
+    });
 
     /* useEffect(() => {
         fetch("http://localhost:3000/api/data")
@@ -67,10 +67,10 @@ export default function Card({data}) {
         })
     }, [])   */
         
-    // url.then((val) => {
-    //     console.log(val);
-    // })
-    // .catch((err => console.log(err)));
+    url.then((val) => {
+        console.log(val);
+    })
+    .catch((err => console.log(err)));
     // "https://images.footballfanatics.com/texas-longhorns/mens-columbia-gray-texas-longhorns-ascender-ii-full-zip-jacket_pi4889000_altimages_ff_4889935-bc277a44770222ef546falt2_full.jpg?_hv=2&w=900"
     
     // console.log(data);
