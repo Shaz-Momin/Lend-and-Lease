@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image.js'
 import { imagesRef, storage } from '../firebase.js'
 import { getDownloadURL, ref } from 'firebase/storage'
 
@@ -32,18 +33,20 @@ export default function Card({data}) {
     });
 
     return (
-        <div classname= "card m-3" title={data.desc}>
-            <a className='flex items-center justify-center hover:border h-52' rel="noreferrer" target="_blank" href={imgUrl}>
-                <img 
-                    width="200"
+        <div classname= "card m-3 cursor-default" title={data.desc}>
+            <a className='relative flex items-center justify-center hover:border h-52' rel="noreferrer" target="_blank" href={imgUrl}>
+                {imgUrl ?
+                <Image 
+                    layout='fill'
+                    objectFit='contain'
                     src={imgUrl}
                     alt={data.name}
-                    className="rounded items-center p-1"
-                />
+                    className="rounded items-center justify-center"
+                /> : <div className="text-center text-xl">Loading...</div>}
             </a>
             <div className="img-footer flex flex-col justify-center items-center hover:bg-logoBg-400">
-                <div className='flex justify-center items-center'>
-                    <div className="flex text-lg font-semibold mx-1 mt-4">{data.name}</div>
+                <div className='flex justify-center items-center w-5/6'>
+                    <div className="flex h-7 text-md lg:text-lg font-semibold mx-2 mt-4 truncate text-ellipsis">{data.name}</div>
                 </div>
                 <p className="text-md mx-4 mt-2 mb-1">${data.pricePerDay}/day</p>
                 <p className="text-sm mx-4">(Safety: ${data.safetyDeposit})</p>

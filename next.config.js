@@ -5,7 +5,17 @@ const nextConfig = {
   source: "/_next/:path*",
   headers: [
     { key: "Access-Control-Allow-Origin", value: '*' },
-  ]
+  ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig
