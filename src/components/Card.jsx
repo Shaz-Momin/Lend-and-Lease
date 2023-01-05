@@ -20,7 +20,7 @@ export default function Card({data}) {
     
     var date = new Date();
     
-    console.log(date.addDays(5));
+    //console.log(date.addDays(5));
 
     const options = { month:"short", day: "numeric" };
 

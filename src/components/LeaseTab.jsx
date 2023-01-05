@@ -1,29 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { getDocs } from "firebase/firestore";
-import { marketRef } from '../firebase.js'
 import Card from './Card';
 
-const LeaseTab = () => {
-    const [products, setProducts] = useState([]);
+const LeaseTab = ({ products }) => {
+    //const [products, setProducts] = useState([]);
 
-    // HOW TO PULL DATA FROM FIREBASE:
-    // Collection data
-    useEffect(() => {
-
-      getDocs(marketRef)
-      .then((snapshot) => {
-        let items = []
-        snapshot.docs.forEach((doc) => {
-          items.push({ ...doc.data(), id: doc.id})
-        })
-        setProducts(items)
-        //console.log(products);
-      })
-      .catch(err => {
-        console.log(err.message)
-      })
-      , []}, [])
-  
+    
     return (
       <div className="bg-white">
         <div>
@@ -149,7 +130,7 @@ const LeaseTab = () => {
                 </form>
                 <div className="lg:col-span-3">
                   {/* <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full"> */}
-                  <div className= "container mx-auto sm:px-4 grid-cols-4 grid-rows-2 p-6 items-center">
+                  <div className= "container mx-auto sm:px-4 lg:grid-cols-4 grid-rows-2 p-6 items-center">
                     <div className= "flex flex-wrap ">
                       {products && products.map((product) => {
                         return (
@@ -166,5 +147,7 @@ const LeaseTab = () => {
       </div>
     )
 }
+
+
 
 export default LeaseTab

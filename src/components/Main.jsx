@@ -4,7 +4,7 @@ import Headbar from './Headbar'
 import HomeTab from './HomeTab'
 import LendTab from './LendTab'
 
-const Main = () => {
+const Main = ({ products }) => {
     // Home, Lend, Lease [0, 1, 2] respectively
     const [tab, setTab] = useState(0)
 
@@ -18,7 +18,7 @@ const Main = () => {
             <div className="h-5/6 w-10/12 ml-auto mr-auto">
                 {tab == 0 && <HomeTab />}
                 {tab == 1 && <LendTab setTab={setTab} />}
-                {tab == 2 && <LeaseTab />}
+                {tab == 2 && <LeaseTab products={products} />}
             </div>
         </div>
     )
